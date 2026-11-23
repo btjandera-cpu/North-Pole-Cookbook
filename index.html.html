@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The North Pole Gazette: Culinary Edition — From the North Pole Kitchen</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display, Libre Baskerville, Caveat, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        newsprint: {
+                            DEFAULT: '#FAF7F2',
+                            cream: '#F2ECE1',
+                            deep: '#E6DEC8',
+                        },
+                        pine: {
+                            DEFAULT: '#162A22',
+                            dark: '#0E1C16',
+                            light: '#244236',
+                        },
+                        cranberry: {
+                            DEFAULT: '#9E2A2B',
+                            dark: '#7A1F20',
+                            light: '#BA3839',
+                        },
+                        brass: {
+                            DEFAULT: '#B88A3B',
+                            light: '#D4AC63',
+                            dark: '#8C6726',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'Georgia', 'serif'],
+                        serif: ['"Libre Baskerville"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        script: ['"Caveat"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Scandinavian Newsprint Ivory & Linen Grain */
+        .bg-newsprint-sheet {
+            background-color: #FAF7F2;
+            background-image:
+                radial-gradient(rgba(22, 42, 34, 0.04) 1px, transparent 0),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(242, 236, 225, 0.45) 100%);
+            background-size: 20px 20px, 100% 100%;
+        }
+
+        /* Broadsheet Double Hairline Rules */
+        .broadsheet-double-top {
+            border-top: 2px solid #162A22;
+            position: relative;
+        }
+        .broadsheet-double-top::after {
+            content: '';
+            display: block;
+            border-top: 1px solid #162A22;
+            margin-top: 3px;
+        }
+
+        .broadsheet-double-bottom {
+            border-bottom: 2px solid #162A22;
+            padding-bottom: 3px;
+            box-shadow: 0 4px 0 -3px #FAF7F2, 0 5px 0 -3px #162A22;
+        }
+
+        /* 3D Hardcover Book Mockup Perspective */
+        .book-stage {
+            perspective: 1400px;
+        }
+        .book-3d {
+            transform: rotateY(-18deg) rotateX(4deg);
+            transform-style: preserve-3d;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s ease;
+            box-shadow:
+                -14px 16px 28px rgba(22, 42, 34, 0.28),
+                -4px 4px 0px #0E1C16,
+                -8px 8px 0px #E6DEC8,
+                -11px 11px 0px #162A22;
+        }
+        .book-3d:hover {
+            transform: rotateY(-6deg) rotateX(1deg) translateY(-4px);
+            box-shadow:
+                -8px 20px 34px rgba(22, 42, 34, 0.32),
+                -3px 3px 0px #0E1C16,
+                -6px 6px 0px #E6DEC8,
+                -9px 9px 0px #162A22;
+        }
+
+        /* Continuous Kitchen Wire Ticker */
+        @keyframes wireMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-wire {
+            display: flex;
+            width: max-content;
+            animation: wireMarquee 36s linear infinite;
+        }
+        .animate-wire:hover {
+            animation-play-state: paused;
+        }
+
+        /* Air-Mail Diagonal Striped Postcard Border */
+        .airmail-frame {
+            background: repeating-linear-gradient(
+                -45deg,
+                #9E2A2B,
+                #9E2A2B 11px,
+                #FAF7F2 11px,
+                #FAF7F2 22px,
+                #162A22 22px,
+                #162A22 33px,
+                #FAF7F2 33px,
+                #FAF7F2 44px
+            );
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F2ECE1; }
+        ::-webkit-scrollbar-thumb { background: #B88A3B; border-radius: 9999px; }
+    </style>
+</head>
+<body class="bg-newsprint-sheet text-pine font-serif antialiased selection:bg-cranberry selection:text-newsprint overflow-x-hidden">
+
+    <!-- ===================================================================== -->
+    <!-- 1. EDITORIAL MASTHEAD & KITCHEN WIRE TICKER                           -->
+    <!-- ===================================================================== -->
+    <header class="sticky top-0 z-40 bg-newsprint/95 backdrop-blur-xs border-b-2 border-pine">
+        <!-- Top Newspaper Dateline Bar -->
+        <div class="bg-pine text-newsprint px-4 sm:px-6 py-1.5 font-mono text-[11px] tracking-wider border-b border-brass/50">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-3">
+                    <span class="text-brass-light font-bold">VOL. CCIII, NO. 25</span>
+                    <span class="hidden sm:inline text-newsprint/40">|</span>
+                    <span class="hidden sm:inline">90°00′N 135°00′W • NORTH POLE CULINARY POST</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="hidden md:inline text-newsprint/85">WEATHER: CRISP SNOWFLAKES &amp; CINNAMON BREEZES</span>
+                    <span class="px-2 py-0.5 rounded bg-cranberry text-newsprint font-bold text-[10px]">OFFICIAL EDITION</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Masthead Bar -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+            <div class="flex items-center justify-between gap-4">
+                <!-- Left Section Links -->
+                <nav aria-label="Primary Broadsheet Navigation" class="hidden lg:flex items-center gap-5 font-mono text-xs font-semibold uppercase tracking-widest text-pine">
+                    <a href="#recipe-archive" class="hover:text-cranberry transition-colors">Recipe Ledger</a>
+                    <span class="text-brass">•</span>
+                    <a href="#personality-quiz" class="hover:text-cranberry transition-colors">Kitchen Quiz</a>
+                    <span class="text-brass">•</span>
+                    <a href="#postcard-press" class="hover:text-cranberry transition-colors">Postcard Press</a>
+                </nav>
+
+                <!-- Center Newspaper Title -->
+                <a href="#" class="text-center mx-auto lg:mx-0 group">
+                    <span class="block font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-cranberry">
+                        From the North Pole Kitchen
+                    </span>
+                    <span class="font-display text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-pine uppercase leading-none">
+                        The North Pole Gazette
+                    </span>
+                    <span class="block font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-brass-dark mt-0.5">
+                        — Culinary Edition —
+                    </span>
+                </a>
+
+                <!-- Right Controls: Editions Anchor + Sleigh Mail Bag Drawer Trigger -->
+                <div class="flex items-center gap-3">
+                    <a href="#editions-press" class="hidden md:inline-block font-mono text-xs font-semibold uppercase tracking-widest text-pine hover:text-cranberry transition-colors">
+                        Editions
+                    </a>
+
+                    <button onclick="toggleMailBag(true)" aria-label="Open Sleigh Mail Bag" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-cranberry hover:bg-cranberry-dark text-newsprint font-mono text-xs font-bold uppercase tracking-wider border border-brass shadow-sm transition-all cursor-pointer">
+                        <span>📮 Sleigh Mail Bag</span>
+                        <span id="mailbag-badge" class="hidden px-2 py-0.5 rounded-full bg-brass text-pine-dark text-[11px] font-extrabold">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button onclick="toggleMobileDrawer()" aria-label="Open Navigation Menu" class="lg:hidden p-2 rounded-lg border border-pine/30 text-pine hover:bg-newsprint-cream">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-nav-drawer" class="hidden lg:hidden mt-3 pt-3 border-t border-pine/20 flex flex-wrap justify-center gap-4 font-mono text-xs font-bold uppercase tracking-wider text-pine">
+                <a href="#recipe-archive" onclick="toggleMobileDrawer()" class="hover:text-cranberry">Recipe Ledger</a>
+                <a href="#personality-quiz" onclick="toggleMobileDrawer()" class="hover:text-cranberry">Kitchen Quiz</a>
+                <a href="#postcard-press" onclick="toggleMobileDrawer()" class="hover:text-cranberry">Postcard Press</a>
+                <a href="#editions-press" onclick="toggleMobileDrawer()" class="hover:text-cranberry">Editions</a>
+            </div>
+        </div>
+
+        <!-- Scrolling Kitchen Dispatch Ticker -->
+        <div class="bg-newsprint-cream border-t border-pine/30 py-1.5 overflow-hidden flex items-center">
+            <div class="bg-pine text-brass-light font-mono text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 ml-3 sm:ml-6 rounded-xs shrink-0 z-10">
+                Kitchen Wire
+            </div>
+            <div class="overflow-hidden flex-1 ml-3">
+                <div class="animate-wire font-mono text-xs text-pine/90 gap-8">
+                    <span>★ <strong>DISPATCH 01:</strong> Midnight Sleigh-Ride Gingerbread cooling on Rack #3 — crisp edges verified by Head Pastry Elf.</span>
+                    <span>•</span>
+                    <span>☕ <strong>DISPATCH 02:</strong> Velvety Peppermint Hot Cocoa simmering in copper kettles across Candy Cane Lane.</span>
+                    <span>•</span>
+                    <span>🦌 <strong>DISPATCH 03:</strong> Reindeer-Approved Maple Oat Treats packed in saddlebags for tonight’s test flight.</span>
+                    <span>•</span>
+                    <span>📮 <strong>POSTAL PROMO:</strong> Enter <strong class="text-cranberry">NORTHPOLE15</strong> (15% Off) or <strong class="text-cranberry">RESCUE20</strong> (20% Off) in your Sleigh Mail Bag.</span>
+                    <span>•</span>
+                    <span>★ <strong>DISPATCH 01:</strong> Midnight Sleigh-Ride Gingerbread cooling on Rack #3 — crisp edges verified by Head Pastry Elf.</span>
+                    <span>•</span>
+                    <span>☕ <strong>DISPATCH 02:</strong> Velvety Peppermint Hot Cocoa simmering in copper kettles across Candy Cane Lane.</span>
+                    <span>•</span>
+                    <span>🦌 <strong>DISPATCH 03:</strong> Reindeer-Approved Maple Oat Treats packed in saddlebags for tonight’s test flight.</span>
+                    <span>•</span>
+                    <span>📮 <strong>POSTAL PROMO:</strong> Enter <strong class="text-cranberry">NORTHPOLE15</strong> (15% Off) or <strong class="text-cranberry">RESCUE20</strong> (20% Off) in your Sleigh Mail Bag.</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. SPLIT EDITORIAL HERO WITH SVG CULINARY SEAL & 3D HARDCOVER BOOK    -->
+    <!-- ===================================================================== -->
+    <section class="border-b-2 border-pine py-10 sm:py-14 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Left Column: Broadsheet Lead Article (7 Cols) -->
+                <div class="lg:col-span-7 space-y-6 lg:border-r lg:border-pine/25 lg:pr-10">
+                    <div class="broadsheet-double-top pt-2 flex flex-wrap items-center justify-between gap-2 font-mono text-xs font-bold uppercase tracking-widest text-pine">
+                        <span>Special Winter Printing</span>
+                        <span class="text-cranberry">By Mr. &amp; Mrs. Nicholas Claus</span>
+                    </div>
+
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-black text-pine leading-[1.06] tracking-tight">
+                        From the North Pole Kitchen: <span class="italic font-bold text-cranberry">Official Recipes</span> of Mr. &amp; Mrs. Claus
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-pine/90 leading-relaxed">
+                        <span class="float-left font-display text-5xl font-black text-cranberry mr-3 leading-none mt-1">F</span>
+                        or generations, the warm stone hearths of 1 Candy Cane Lane have fueled midnight sleigh runs and snowy workshop evenings. Now, bound in evergreen linen and antique brass foil, our official kitchen ledger invites your family to bake our three most treasured holiday classics—alongside 120+ heirloom winter dishes.
+                    </p>
+
+                    <!-- Primary & Secondary Broadsheet CTAs -->
+                    <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
+                        <a href="#editions-press" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-widest border-2 border-brass shadow-md transition-all">
+                            <span>Order Your Edition</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                        <a href="#recipe-archive" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-newsprint-cream hover:bg-newsprint-deep text-pine font-mono text-xs font-bold uppercase tracking-widest border border-pine/35 transition-all">
+                            <span>Inspect the 3 Signature Recipes</span>
+                        </a>
+                    </div>
+
+                    <!-- Broadsheet Specification Strip -->
+                    <div class="pt-5 border-t border-pine/25 grid grid-cols-3 gap-4 font-mono">
+                        <div>
+                            <span class="block text-lg sm:text-2xl font-display font-bold text-pine">120+</span>
+                            <span class="text-[11px] uppercase tracking-wider text-pine/70">Tested Recipes</span>
+                        </div>
+                        <div>
+                            <span class="block text-lg sm:text-2xl font-display font-bold text-cranberry">320 Pages</span>
+                            <span class="text-[11px] uppercase tracking-wider text-pine/70">Archival Cream Stock</span>
+                        </div>
+                        <div>
+                            <span class="block text-lg sm:text-2xl font-display font-bold text-pine">1x–3x</span>
+                            <span class="text-[11px] uppercase tracking-wider text-pine/70">Batch Scaling Ledger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: 3D Hardcover Book Preview + SVG Culinary Post Seal (5 Cols) -->
+                <div class="lg:col-span-5">
+                    <div class="bg-newsprint-cream rounded-3xl p-6 sm:p-8 border-2 border-pine shadow-lg relative flex flex-col items-center">
+                        
+                        <!-- Floating Custom SVG North Pole Culinary Post Seal (Top-Right Badge) -->
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 self-end -mt-2 -mr-2 mb-[-38px] z-20 drop-shadow-md">
+                            <svg viewBox="0 0 140 140" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Official North Pole Culinary Post Seal">
+                                <circle cx="70" cy="70" r="64" fill="#FAF7F2" stroke="#162A22" stroke-width="3"/>
+                                <circle cx="70" cy="70" r="57" stroke="#B88A3B" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <!-- Crossed Rolling Pin & Whisk -->
+                                <line x1="42" y1="42" x2="98" y2="98" stroke="#B88A3B" stroke-width="5" stroke-linecap="round"/>
+                                <line x1="98" y1="42" x2="42" y2="98" stroke="#162A22" stroke-width="3" stroke-linecap="round"/>
+                                <!-- Center Crimson Seal -->
+                                <circle cx="70" cy="70" r="24" fill="#9E2A2B" stroke="#D4AC63" stroke-width="2"/>
+                                <path d="M70 53L73.5 66.5L87 70L73.5 73.5L70 87L66.5 73.5L53 70L66.5 66.5L70 53Z" fill="#FAF7F2"/>
+                                <text x="70" y="25" text-anchor="middle" fill="#162A22" font-family="monospace" font-size="8" font-weight="700" letter-spacing="1.2">NORTH POLE</text>
+                                <text x="70" y="121" text-anchor="middle" fill="#9E2A2B" font-family="monospace" font-size="8" font-weight="700" letter-spacing="1">CULINARY POST</text>
+                            </svg>
+                        </div>
+
+                        <!-- 3D Hardcover Cookbook Mockup -->
+                        <div class="book-stage py-4">
+                            <div class="book-3d w-60 sm:w-64 h-80 sm:h-[340px] rounded-r-2xl rounded-l-md bg-pine border-2 border-brass p-5 flex flex-col justify-between text-newsprint relative select-none">
+                                <!-- Spine Ridge -->
+                                <div class="absolute inset-y-0 left-3 w-[1px] bg-brass/40"></div>
+                                
+                                <!-- Decorative Brass Filigree Frame -->
+                                <div class="border border-brass/75 rounded-xl p-4 h-full flex flex-col justify-between text-center relative">
+                                    <div class="space-y-1">
+                                        <span class="block font-mono text-[9px] uppercase tracking-[0.22em] text-brass-light">Official Kitchen Ledger</span>
+                                        <div class="w-10 h-[1px] bg-brass mx-auto"></div>
+                                    </div>
+
+                                    <!-- Cover Title & Emblem -->
+                                    <div class="space-y-2 my-auto">
+                                        <div class="w-12 h-12 mx-auto rounded-full bg-cranberry border border-brass flex items-center justify-center text-xl shadow">
+                                            🎄
+                                        </div>
+                                        <h2 class="font-display text-xl sm:text-2xl font-extrabold leading-tight text-newsprint">
+                                            From the<br>North Pole<br><span class="text-brass-light italic">Kitchen</span>
+                                        </h2>
+                                        <p class="font-mono text-[9px] uppercase tracking-widest text-newsprint/80 pt-1">
+                                            Official Recipes of<br>Mr. &amp; Mrs. Claus
+                                        </p>
+                                    </div>
+
+                                    <div class="font-mono text-[8px] uppercase tracking-[0.25em] text-brass-light border-t border-brass/40 pt-2">
+                                        1 Candy Cane Lane • 90°N
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-4 font-script text-2xl text-cranberry text-center">
+                            “Tested by elves, approved by Rudolph &amp; Santa!”
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. INTERACTIVE RECIPE ARCHIVE & BATCH SCALER (EXACT 3 RECIPES)        -->
+    <!-- ===================================================================== -->
+    <section id="recipe-archive" class="py-14 sm:py-16 border-b-2 border-pine">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header + Filter & Batch Scaling Toolbar -->
+            <div class="broadsheet-double-bottom pb-6 mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+                <div class="space-y-2">
+                    <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-cranberry">
+                        Signature Ledger Dispatches
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-black text-pine">
+                        Interactive Recipe Archive &amp; Batch Scaler
+                    </h2>
+                    <p class="text-sm sm:text-base text-pine/80 max-w-2xl">
+                        Filter our three foundational North Pole recipes, scale ingredient yields from <strong>1x</strong> to <strong>3x</strong> in real time, and open any card for full step-by-step instructions and an interactive ingredient checklist.
+                    </p>
+                </div>
+
+                <!-- Right Controls: Batch Scaler + Category Filters -->
+                <div class="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3">
+                    <!-- Batch Multiplier Switcher (1x / 2x / 3x) -->
+                    <div class="inline-flex items-center gap-1.5 bg-newsprint-cream p-1.5 rounded-full border border-pine/30">
+                        <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-pine px-2.5">Batch Scale:</span>
+                        <button type="button" onclick="setBatchScale(1)" id="scale-btn-1" class="scale-btn px-3.5 py-1 rounded-full bg-cranberry text-newsprint font-mono text-xs font-bold transition-all cursor-pointer">
+                            1x
+                        </button>
+                        <button type="button" onclick="setBatchScale(2)" id="scale-btn-2" class="scale-btn px-3.5 py-1 rounded-full text-pine hover:bg-newsprint-deep font-mono text-xs font-bold transition-all cursor-pointer">
+                            2x
+                        </button>
+                        <button type="button" onclick="setBatchScale(3)" id="scale-btn-3" class="scale-btn px-3.5 py-1 rounded-full text-pine hover:bg-newsprint-deep font-mono text-xs font-bold transition-all cursor-pointer">
+                            3x
+                        </button>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div role="tablist" aria-label="Filter Recipes by Category" class="flex flex-wrap gap-2">
+                        <button type="button" onclick="setRecipeFilter('all')" id="filter-btn-all" class="filter-btn px-3.5 py-1.5 rounded-full bg-pine text-newsprint font-mono text-xs font-bold uppercase tracking-wider border border-pine transition-all cursor-pointer">
+                            All Recipes (3)
+                        </button>
+                        <button type="button" onclick="setRecipeFilter('Cookies')" id="filter-btn-Cookies" class="filter-btn px-3.5 py-1.5 rounded-full bg-newsprint-cream hover:bg-newsprint-deep text-pine font-mono text-xs font-bold uppercase tracking-wider border border-pine/25 transition-all cursor-pointer">
+                            Cookies
+                        </button>
+                        <button type="button" onclick="setRecipeFilter('Cocoa & Drinks')" id="filter-btn-Cocoa & Drinks" class="filter-btn px-3.5 py-1.5 rounded-full bg-newsprint-cream hover:bg-newsprint-deep text-pine font-mono text-xs font-bold uppercase tracking-wider border border-pine/25 transition-all cursor-pointer">
+                            Cocoa &amp; Drinks
+                        </button>
+                        <button type="button" onclick="setRecipeFilter('Sleigh-Side Treats')" id="filter-btn-Sleigh-Side Treats" class="filter-btn px-3.5 py-1.5 rounded-full bg-newsprint-cream hover:bg-newsprint-deep text-pine font-mono text-xs font-bold uppercase tracking-wider border border-pine/25 transition-all cursor-pointer">
+                            Sleigh-Side Treats
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Signature Recipe Broadsheet Columns -->
+            <div id="signature-recipes-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. INTERACTIVE "NORTH POLE BAKING PERSONALITY & RECIPE MATCHER" QUIZ  -->
+    <!-- ===================================================================== -->
+    <section id="personality-quiz" class="py-14 sm:py-16 border-b-2 border-pine bg-newsprint-cream/75">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-10">
+                <span class="inline-block px-3 py-1 rounded-full bg-pine text-brass-light font-mono text-[11px] font-bold uppercase tracking-widest">
+                    Workshop Guild Examination
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-black text-pine">
+                    North Pole Baking Personality &amp; Recipe Matcher
+                </h2>
+                <p class="text-sm sm:text-base text-pine/80 max-w-2xl mx-auto">
+                    Answer 3 quick questions from Mrs. Claus’s workbench to receive your official North Pole guild role and jump directly to your signature recipe.
+                </p>
+            </div>
+
+            <!-- Quiz Card -->
+            <div class="bg-newsprint rounded-3xl border-2 border-pine shadow-xl overflow-hidden">
+                <!-- Top Progress Bar -->
+                <div class="bg-pine text-newsprint px-6 py-3.5 border-b border-brass/50 flex items-center justify-between">
+                    <span id="quiz-progress-text" class="font-mono text-xs font-bold uppercase tracking-widest text-brass-light">
+                        Question 1 of 3
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <span id="quiz-pip-0" class="w-3 h-3 rounded-full bg-brass"></span>
+                        <span id="quiz-pip-1" class="w-3 h-3 rounded-full bg-newsprint/25"></span>
+                        <span id="quiz-pip-2" class="w-3 h-3 rounded-full bg-newsprint/25"></span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Quiz Content -->
+                <div id="quiz-stage" class="p-6 sm:p-10">
+                    <!-- Rendered via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. "SEND A HINT" NORTH POLE POSTCARD GENERATOR                        -->
+    <!-- ===================================================================== -->
+    <section id="postcard-press" class="py-14 sm:py-16 border-b-2 border-pine">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
+                <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-cranberry">
+                    North Pole Postal Press
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-black text-pine">
+                    “Send a Hint” North Pole Postcard Generator
+                </h2>
+                <p class="text-sm sm:text-base text-pine/80">
+                    Address an official air-mail postcard, choose a North Pole stamp, and copy a ready-to-send wish-list hint with one click.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Controls (5 Cols) -->
+                <div class="lg:col-span-5 bg-newsprint-cream rounded-3xl p-6 sm:p-7 border-2 border-pine shadow-md space-y-4">
+                    <h3 class="font-display text-xl font-bold text-pine border-b border-pine/20 pb-2.5">
+                        Customize Your Postal Card
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label for="hint-to" class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine mb-1">To (Recipient)</label>
+                            <input id="hint-to" type="text" value="My Favorite Elf" oninput="refreshPostcard()" maxlength="28" class="w-full px-3.5 py-2 rounded-xl bg-newsprint border border-pine/30 font-serif text-sm focus:outline-none focus:ring-2 focus:ring-cranberry">
+                        </div>
+                        <div>
+                            <label for="hint-from" class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine mb-1">From (Sender)</label>
+                            <input id="hint-from" type="text" value="A Holiday Baker" oninput="refreshPostcard()" maxlength="28" class="w-full px-3.5 py-2 rounded-xl bg-newsprint border border-pine/30 font-serif text-sm focus:outline-none focus:ring-2 focus:ring-cranberry">
+                        </div>
+                    </div>
+
+                    <!-- Stamp Selector -->
+                    <div>
+                        <span class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine mb-1.5">Select North Pole Stamp</span>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" onclick="selectPostcardStamp('🎄', 'PINE EXPRESS')" id="stamp-btn-0" class="stamp-btn py-2 px-2 rounded-xl bg-pine text-newsprint border-2 border-brass font-mono text-[10px] font-bold text-center transition-all cursor-pointer">
+                                🎄 Pine Express
+                            </button>
+                            <button type="button" onclick="selectPostcardStamp('🦌', 'REINDEER AIR')" id="stamp-btn-1" class="stamp-btn py-2 px-2 rounded-xl bg-newsprint hover:bg-newsprint-deep text-pine border border-pine/25 font-mono text-[10px] font-bold text-center transition-all cursor-pointer">
+                                🦌 Reindeer Air
+                            </button>
+                            <button type="button" onclick="selectPostcardStamp('🍪', 'COOKIE POST')" id="stamp-btn-2" class="stamp-btn py-2 px-2 rounded-xl bg-newsprint hover:bg-newsprint-deep text-pine border border-pine/25 font-mono text-[10px] font-bold text-center transition-all cursor-pointer">
+                                🍪 Cookie Post
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="hint-edition" class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine mb-1">Wish-List Cookbook Edition</label>
+                        <select id="hint-edition" onchange="refreshPostcard()" class="w-full px-3.5 py-2 rounded-xl bg-newsprint border border-pine/30 font-serif text-sm focus:outline-none focus:ring-2 focus:ring-cranberry">
+                            <option value="Signed Collector's Edition ($55)">Signed Collector's Edition ($55)</option>
+                            <option value="Standard Hardcover ($34)">Standard Hardcover ($34)</option>
+                            <option value="Digital Edition ($22)">Digital Edition ($22)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="hint-message" class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine mb-1">Personal Hint Note</label>
+                        <textarea id="hint-message" rows="2" oninput="refreshPostcard()" maxlength="120" class="w-full px-3.5 py-2 rounded-xl bg-newsprint border border-pine/30 font-serif text-sm focus:outline-none focus:ring-2 focus:ring-cranberry">Leave this under the tree and I’ll bake Midnight Sleigh-Ride Gingerbread for us on Christmas morning!</textarea>
+                    </div>
+
+                    <button type="button" onclick="copyHintMessage()" class="w-full py-3.5 px-5 rounded-full bg-cranberry hover:bg-cranberry-dark text-newsprint font-mono text-xs font-bold uppercase tracking-widest border border-brass shadow-md transition-all cursor-pointer">
+                        📋 Copy Hint Message to Share
+                    </button>
+                    <p id="hint-copy-status" class="hidden text-center font-mono text-xs font-bold text-pine"></p>
+                </div>
+
+                <!-- Right Live Air-Mail Postcard Preview (7 Cols) -->
+                <div class="lg:col-span-7">
+                    <div class="airmail-frame p-3 rounded-3xl shadow-2xl">
+                        <div class="bg-newsprint rounded-2xl p-6 sm:p-8 border border-pine/30 space-y-5">
+                            <!-- Top Postcard Header & Selected Stamp -->
+                            <div class="flex items-start justify-between gap-4 border-b-2 border-pine/20 pb-4">
+                                <div>
+                                    <span class="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cranberry block">Official North Pole Postal Card</span>
+                                    <h4 class="font-display text-2xl sm:text-3xl font-black text-pine tracking-tight">CARTE POSTALE</h4>
+                                    <p class="font-mono text-[11px] text-pine/65">DISPATCHED FROM 1 CANDY CANE LANE • 90°N</p>
+                                </div>
+
+                                <!-- Live Stamp Box -->
+                                <div class="w-20 h-24 rounded-lg bg-pine border-2 border-dashed border-brass p-2 flex flex-col items-center justify-between text-newsprint shadow shrink-0">
+                                    <span id="preview-stamp-icon" class="text-2xl">🎄</span>
+                                    <span id="preview-stamp-label" class="font-mono text-[8px] font-bold uppercase tracking-wider text-brass-light text-center leading-tight">PINE EXPRESS</span>
+                                </div>
+                            </div>
+
+                            <!-- Split Postcard Content -->
+                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-6">
+                                <!-- Left Handwritten Note -->
+                                <div class="sm:col-span-7 sm:border-r sm:border-pine/20 sm:pr-5 space-y-3">
+                                    <p id="preview-hint-message" class="font-script text-2xl sm:text-3xl text-pine leading-snug">
+                                        “Leave this under the tree and I’ll bake Midnight Sleigh-Ride Gingerbread for us on Christmas morning!”
+                                    </p>
+                                    <div class="bg-newsprint-cream rounded-xl p-3 border border-brass/60">
+                                        <span class="block font-mono text-[10px] font-bold uppercase tracking-wider text-cranberry">Requested Edition:</span>
+                                        <span id="preview-hint-edition" class="font-display font-bold text-sm text-pine">
+                                            Signed Collector's Edition ($55)
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Right Address Lines -->
+                                <div class="sm:col-span-5 flex flex-col justify-between space-y-4">
+                                    <div class="space-y-3">
+                                        <div class="border-b border-pine/35 pb-1">
+                                            <span class="font-mono text-[10px] uppercase tracking-wider text-pine/60 block">Deliver To:</span>
+                                            <span id="preview-hint-to" class="font-script text-2xl text-pine font-bold">My Favorite Elf</span>
+                                        </div>
+                                        <div class="border-b border-pine/35 pb-1">
+                                            <span class="font-mono text-[10px] uppercase tracking-wider text-pine/60 block">From:</span>
+                                            <span id="preview-hint-from" class="font-script text-2xl text-cranberry font-bold">A Holiday Baker</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Crimson Wax Seal -->
+                                    <div class="flex justify-end pt-2">
+                                        <div class="w-12 h-12 rounded-full bg-cranberry border-2 border-brass-light flex items-center justify-center text-newsprint font-display font-bold text-sm shadow-md rotate-6">
+                                            NP
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. 3-TIER COOKBOOK EDITION SELECTOR                                   -->
+    <!-- ===================================================================== -->
+    <section id="editions-press" class="py-16 sm:py-20 bg-newsprint-cream/65">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2.5 mb-14">
+                <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-cranberry">
+                    North Pole Printing Press
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-black text-pine">
+                    Choose Your Cookbook Edition
+                </h2>
+                <p class="text-sm sm:text-base text-pine/80">
+                    Add your chosen edition to the <strong>Sleigh Mail Bag</strong>. Apply promo codes <code class="px-1.5 py-0.5 rounded bg-newsprint border border-pine/25 font-mono text-xs text-cranberry font-bold">NORTHPOLE15</code> (15% off) or <code class="px-1.5 py-0.5 rounded bg-newsprint border border-pine/25 font-mono text-xs text-cranberry font-bold">RESCUE20</code> (20% off) inside your bag.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Edition 1: Digital Edition ($22) -->
+                <div class="bg-newsprint rounded-3xl p-7 sm:p-8 border-2 border-pine/30 shadow-md flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-pine/10 text-pine font-mono text-[11px] font-bold uppercase tracking-wider">Instant Dispatch</span>
+                            <span class="font-display text-4xl font-black text-pine">$22</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-pine">Digital Edition</h3>
+                        <p class="text-sm text-pine/80 leading-relaxed">
+                            Immediate tablet, phone, and home-printer edition so you can start baking tonight.
+                        </p>
+                        <ul class="space-y-2.5 pt-3 border-t border-pine/15 font-mono text-xs text-pine/90">
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Complete 320-page interactive PDF &amp; ePub</li>
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Printable Scandinavian cookie tin labels</li>
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Built-in batch scaling conversion charts</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="addToMailBag('Digital Edition', 22, 'Instant Digital Download')" class="w-full py-3.5 px-6 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-widest border border-brass transition-all cursor-pointer">
+                        Add to Sleigh Mail Bag — $22
+                    </button>
+                </div>
+
+                <!-- Edition 2: Standard Hardcover ($34) -->
+                <div class="bg-newsprint rounded-3xl p-7 sm:p-8 border-2 border-pine/30 shadow-md flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-cranberry/10 text-cranberry font-mono text-[11px] font-bold uppercase tracking-wider">Linen Hardcover</span>
+                            <span class="font-display text-4xl font-black text-pine">$34</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-pine">Standard Hardcover</h3>
+                        <p class="text-sm text-pine/80 leading-relaxed">
+                            Smyth-sewn evergreen linen hardcover built to lie flat on flour-dusted kitchen counters.
+                        </p>
+                        <ul class="space-y-2.5 pt-3 border-t border-pine/15 font-mono text-xs text-pine/90">
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Archival heavyweight cream paper pages</li>
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Brass-foil stamped pine &amp; star cover</li>
+                            <li class="flex items-start gap-2"><span class="text-pine font-bold">✓</span> Official North Pole Wax-Sealed gift tag</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="addToMailBag('Standard Hardcover', 34, 'Smyth-Sewn Linen Hardcover')" class="w-full py-3.5 px-6 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-widest border border-brass transition-all cursor-pointer">
+                        Add to Sleigh Mail Bag — $34
+                    </button>
+                </div>
+
+                <!-- Edition 3: Signed Collector's Edition ($55) - Featured -->
+                <div class="bg-pine text-newsprint rounded-3xl p-7 sm:p-8 border-[3px] border-brass shadow-2xl flex flex-col justify-between space-y-6 relative lg:-translate-y-2">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-cranberry text-newsprint font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1 rounded-full border border-brass shadow whitespace-nowrap">
+                        ★ Most Cherished Gift
+                    </div>
+
+                    <div class="space-y-4 pt-1">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-pine-dark text-brass-light border border-brass/40 font-mono text-[11px] font-bold uppercase tracking-wider">Heirloom Run</span>
+                            <span class="font-display text-4xl font-black text-brass-light">$55</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-newsprint">Signed Collector's Edition</h3>
+                        <p class="text-sm text-newsprint/85 leading-relaxed">
+                            Hand-signed on the endpaper by both Mr. &amp; Mrs. Claus and sealed in crimson North Pole wax.
+                        </p>
+                        <ul class="space-y-2.5 pt-3 border-t border-brass/30 font-mono text-xs text-newsprint/90">
+                            <li class="flex items-start gap-2"><span class="text-brass-light font-bold">★</span> Autographed by Mr. &amp; Mrs. Claus</li>
+                            <li class="flex items-start gap-2"><span class="text-brass-light font-bold">★</span> Solid engraved brass sleigh bookmark</li>
+                            <li class="flex items-start gap-2"><span class="text-brass-light font-bold">★</span> Gold-gilded page edges &amp; ribbon marker</li>
+                            <li class="flex items-start gap-2"><span class="text-brass-light font-bold">★</span> Includes Digital Edition ($22 value) free</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="addToMailBag('Signed Collector\'s Edition', 55, 'Autographed + Brass Bookmark + Digital Edition')" class="w-full py-4 px-6 rounded-full bg-cranberry hover:bg-cranberry-light text-newsprint font-mono text-xs font-bold uppercase tracking-widest border border-brass shadow-lg transition-all cursor-pointer">
+                        Add Collector's — $55
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. FOOTER                                                             -->
+    <!-- ===================================================================== -->
+    <footer class="bg-pine-dark text-newsprint border-t-4 border-brass py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="font-display text-xl font-bold text-brass-light">The North Pole Gazette: Culinary Edition</p>
+                <p class="font-mono text-xs text-newsprint/70 mt-1">1 Candy Cane Lane, 90°N • Official Culinary Press of Mr. &amp; Mrs. Claus</p>
+            </div>
+            <div class="font-mono text-xs text-newsprint/80">
+                Active Postal Codes: <strong class="text-brass-light">NORTHPOLE15</strong> (15% Off) • <strong class="text-brass-light">RESCUE20</strong> (20% Off)
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- FULL RECIPE INSPECTION MODAL (WITH SCALED INGREDIENTS & CHECKLIST)    -->
+    <!-- ===================================================================== -->
+    <div id="recipe-inspection-modal" role="dialog" aria-modal="true" aria-labelledby="inspected-recipe-title" class="hidden fixed inset-0 z-50 bg-pine-dark/75 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-newsprint rounded-3xl max-w-2xl w-full border-[3px] border-brass shadow-2xl overflow-hidden my-auto">
+            <!-- Modal Header -->
+            <div class="bg-pine text-newsprint px-6 py-4 border-b border-brass flex items-center justify-between gap-3">
+                <div>
+                    <span id="inspected-recipe-category" class="font-mono text-[10px] font-bold uppercase tracking-widest text-brass-light">North Pole Ledger</span>
+                    <h3 id="inspected-recipe-title" class="font-display text-xl sm:text-2xl font-bold">Recipe Title</h3>
+                </div>
+                <button type="button" onclick="closeRecipeInspection()" aria-label="Close Recipe Modal" class="w-8 h-8 rounded-full bg-pine-dark hover:bg-cranberry text-newsprint flex items-center justify-center font-mono font-bold border border-brass/40 cursor-pointer">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-8 space-y-6 max-h-[82vh] overflow-y-auto">
+                <!-- Batch Scale Bar inside Modal -->
+                <div class="flex flex-wrap items-center justify-between gap-3 bg-newsprint-cream px-4 py-3 rounded-2xl border border-pine/20">
+                    <div id="inspected-recipe-meta" class="font-mono text-xs font-bold text-pine"></div>
+                    <div class="inline-flex items-center gap-1 bg-newsprint p-1 rounded-full border border-pine/25">
+                        <span class="font-mono text-[10px] font-bold uppercase px-2 text-pine/75">Scale:</span>
+                        <button type="button" onclick="setBatchScale(1)" class="modal-scale-btn px-2.5 py-0.5 rounded-full font-mono text-xs font-bold cursor-pointer">1x</button>
+                        <button type="button" onclick="setBatchScale(2)" class="modal-scale-btn px-2.5 py-0.5 rounded-full font-mono text-xs font-bold cursor-pointer">2x</button>
+                        <button type="button" onclick="setBatchScale(3)" class="modal-scale-btn px-2.5 py-0.5 rounded-full font-mono text-xs font-bold cursor-pointer">3x</button>
+                    </div>
+                </div>
+
+                <!-- Interactive Ingredient Checklist -->
+                <div class="space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg font-bold text-pine">Scaled Ingredient Checklist</h4>
+                        <span class="font-mono text-[11px] text-pine/60">Tap to check off</span>
+                    </div>
+                    <div id="inspected-ingredients-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <!-- Checkboxes populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Step-by-Step Instructions -->
+                <div class="space-y-2.5">
+                    <h4 class="font-display text-lg font-bold text-pine">Step-by-Step Hearthside Instructions</h4>
+                    <ol id="inspected-steps-list" class="space-y-2.5 text-sm sm:text-base text-pine/90 list-decimal list-inside">
+                        <!-- Steps populated by JS -->
+                    </ol>
+                </div>
+
+                <div class="pt-3 border-t border-pine/20 flex flex-wrap items-center justify-between gap-3">
+                    <span class="font-script text-2xl text-cranberry">Official Ledger Entry • Mrs. Claus</span>
+                    <button type="button" onclick="closeRecipeInspection()" class="px-5 py-2.5 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-wider cursor-pointer">
+                        Close Recipe Card
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SLEIGH MAIL BAG SLIDE-OUT CART DRAWER                                 -->
+    <!-- ===================================================================== -->
+    <div id="mailbag-overlay" onclick="toggleMailBag(false)" class="hidden fixed inset-0 z-50 bg-pine-dark/65 backdrop-blur-xs"></div>
+    <aside id="mailbag-drawer" aria-label="Sleigh Mail Bag Cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-newsprint border-l-2 border-pine shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        
+        <!-- Drawer Header -->
+        <div class="bg-pine text-newsprint px-6 py-4 border-b-2 border-brass flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <span class="text-xl">📮</span>
+                <div>
+                    <span class="block font-mono text-[10px] font-bold uppercase tracking-widest text-brass-light">Reindeer Express</span>
+                    <h3 class="font-display text-xl font-bold">Sleigh Mail Bag</h3>
+                </div>
+            </div>
+            <button type="button" onclick="toggleMailBag(false)" aria-label="Close Sleigh Mail Bag" class="w-8 h-8 rounded-full bg-pine-dark hover:bg-cranberry text-newsprint flex items-center justify-center font-mono font-bold border border-brass/40 cursor-pointer">
+                ✕
+            </button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div id="mailbag-items-container" class="flex-1 overflow-y-auto p-6 space-y-3.5">
+            <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Promo Code & Totals Footer -->
+        <div class="p-6 bg-newsprint-cream border-t-2 border-pine/25 space-y-4">
+            <div class="space-y-1.5">
+                <label for="mailbag-promo-field" class="block font-mono text-[11px] font-bold uppercase tracking-wider text-pine">
+                    North Pole Promo Code
+                </label>
+                <div class="flex gap-2">
+                    <input id="mailbag-promo-field" type="text" placeholder="NORTHPOLE15 or RESCUE20" class="flex-1 px-3.5 py-2 rounded-full bg-newsprint border border-pine/30 font-mono text-xs uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-cranberry">
+                    <button type="button" onclick="applyPostalPromo()" class="px-4 py-2 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-wider cursor-pointer">
+                        Apply
+                    </button>
+                </div>
+                <p id="mailbag-promo-feedback" class="hidden font-mono text-xs font-bold"></p>
+            </div>
+
+            <!-- Totals Breakdown -->
+            <div class="space-y-1.5 pt-2 border-t border-pine/20 font-mono text-xs sm:text-sm">
+                <div class="flex justify-between text-pine/75">
+                    <span>Subtotal</span>
+                    <span id="mailbag-subtotal">$0.00</span>
+                </div>
+                <div id="mailbag-discount-row" class="hidden flex justify-between text-cranberry font-bold">
+                    <span id="mailbag-discount-label">Promo Discount</span>
+                    <span id="mailbag-discount-amount">-$0.00</span>
+                </div>
+                <div class="flex justify-between items-center font-display text-xl font-black text-pine pt-1">
+                    <span>Sleigh Total</span>
+                    <span id="mailbag-total">$0.00</span>
+                </div>
+            </div>
+
+            <button type="button" id="mailbag-checkout-btn" onclick="completePostalOrder()" class="w-full py-3.5 px-6 rounded-full bg-cranberry hover:bg-cranberry-dark disabled:opacity-45 text-newsprint font-mono text-xs font-bold uppercase tracking-widest border border-brass shadow-md transition-all cursor-pointer">
+                Seal &amp; Dispatch Sleigh Order
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===================================================================== -->
+    <!-- ORDER CHECKOUT CONFIRMATION MODAL (NO alert() USED)                   -->
+    <!-- ===================================================================== -->
+    <div id="checkout-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-confirm-title" class="hidden fixed inset-0 z-50 bg-pine-dark/75 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-newsprint rounded-3xl max-w-md w-full p-7 border-[3px] border-brass shadow-2xl text-center space-y-4">
+            <div class="w-16 h-16 mx-auto rounded-full bg-cranberry border-2 border-brass-light flex items-center justify-center text-3xl text-newsprint shadow-lg">
+                📮
+            </div>
+            <span class="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-cranberry block">Postmarked 90° North</span>
+            <h3 id="checkout-confirm-title" class="font-display text-2xl font-black text-pine">
+                Your Sleigh Mail Bag Is Dispatched!
+            </h3>
+            <p id="checkout-confirm-summary" class="text-sm sm:text-base text-pine/85 leading-relaxed">
+                Head Postmaster Bernard has logged your cookbook order into the Great Ledger.
+            </p>
+            <button type="button" onclick="closeCheckoutModal()" class="w-full py-3 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-widest cursor-pointer">
+                Return to The North Pole Gazette
+            </button>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: RECIPES, BATCH SCALER, QUIZ, POSTCARD & CART              -->
+    <!-- ===================================================================== -->
+    <script>
+        // 1. THE EXACT THREE ORIGINAL SIGNATURE RECIPES WITH SCALABLE INGREDIENTS
+        const signatureRecipes = [
+            {
+                id: "midnight-gingerbread",
+                title: "Midnight Sleigh-Ride Gingerbread",
+                category: "Cookies",
+                icon: "🍪",
+                prepTime: "20 Mins",
+                bakeTime: "10 Mins",
+                baseYield: 24,
+                yieldUnit: "Cookies",
+                summary: "Crisp-edged, chewy-centered molasses cookies spiced with freshly grated ginger, Ceylon cinnamon, and a pinch of cloves for Santa's midnight flight.",
+                ingredients: [
+                    { amount: 2.25, unit: "cups", name: "all-purpose flour, sifted" },
+                    { amount: 2, unit: "tsp", name: "ground ginger" },
+                    { amount: 1.5, unit: "tsp", name: "Ceylon cinnamon" },
+                    { amount: 0.5, unit: "tsp", name: "ground cloves" },
+                    { amount: 0.75, unit: "cup", name: "unsalted sweet cream butter, softened" },
+                    { amount: 0.5, unit: "cup", name: "dark muscovado brown sugar" },
+                    { amount: 0.33, unit: "cup", name: "unsulphured blackstrap molasses" },
+                    { amount: 1, unit: "large", name: "farm egg yolk" }
+                ],
+                steps: [
+                    "Cream softened butter and dark muscovado brown sugar together in a stoneware bowl until fluffy, then beat in the blackstrap molasses and farm egg yolk.",
+                    "Fold in the sifted flour, ground ginger, Ceylon cinnamon, and cloves until a smooth, fragrant dough comes together.",
+                    "Roll dough to ¼-inch thickness on a lightly floured surface, stamp with sleigh and star cutters, and bake at 350°F (175°C) for 9–10 minutes until edges turn crisp."
+                ]
+            },
+            {
+                id: "velvety-peppermint-cocoa",
+                title: "Velvety Peppermint Hot Cocoa",
+                category: "Cocoa & Drinks",
+                icon: "☕",
+                prepTime: "5 Mins",
+                bakeTime: "8 Mins",
+                baseYield: 4,
+                yieldUnit: "Mugs",
+                summary: "Rich melted 70% dark chocolate whisked into steaming whole milk with crushed North Pole candy canes and clouds of vanilla bean whipped cream.",
+                ingredients: [
+                    { amount: 3, unit: "cups", name: "whole farm milk" },
+                    { amount: 1, unit: "cup", name: "heavy whipping cream, divided" },
+                    { amount: 6, unit: "oz", name: "70% dark chocolate, finely chopped" },
+                    { amount: 2, unit: "tbsp", name: "Dutch-process cocoa powder" },
+                    { amount: 2, unit: "tbsp", name: "pure maple syrup" },
+                    { amount: 0.5, unit: "tsp", name: "pure peppermint extract" },
+                    { amount: 4, unit: "whole", name: "crushed peppermint candy canes" }
+                ],
+                steps: [
+                    "Warm the whole milk, half of the heavy cream, Dutch-process cocoa powder, and maple syrup in a heavy saucepan over medium-low heat until steaming.",
+                    "Remove from the burner and whisk in the finely chopped 70% dark chocolate and peppermint extract until velvety smooth and glossy.",
+                    "Whip the remaining cream to soft peaks, ladle hot cocoa into mugs, and crown with vanilla cream and crushed candy canes."
+                ]
+            },
+            {
+                id: "reindeer-maple-oat-treats",
+                title: "Reindeer-Approved Maple Oat Treats",
+                category: "Sleigh-Side Treats",
+                icon: "🦌",
+                prepTime: "10 Mins",
+                bakeTime: "16 Mins",
+                baseYield: 16,
+                yieldUnit: "Squares",
+                summary: "Golden toasted rolled oats bound with pure Vermont maple syrup, roasted pecans, and ruby cranberries—Dasher and Rudolph’s pre-flight favorite.",
+                ingredients: [
+                    { amount: 2.5, unit: "cups", name: "old-fashioned rolled oats" },
+                    { amount: 1, unit: "cup", name: "chopped roasted pecans" },
+                    { amount: 0.75, unit: "cup", name: "dried ruby cranberries" },
+                    { amount: 0.5, unit: "cup", name: "pure amber maple syrup" },
+                    { amount: 0.33, unit: "cup", name: "browned unsalted butter, melted" },
+                    { amount: 1, unit: "tsp", name: "pure Madagascar vanilla extract" },
+                    { amount: 0.5, unit: "tsp", name: "flaky sea salt" }
+                ],
+                steps: [
+                    "Spread rolled oats and chopped pecans on a baking sheet and toast at 350°F (175°C) for 8 minutes until golden and nutty.",
+                    "Toss the warm oats and pecans in a mixing bowl with browned butter, amber maple syrup, vanilla extract, sea salt, and dried ruby cranberries.",
+                    "Press firmly into a parchment-lined 8x8-inch pan, bake for 16 minutes until bubbling around the edges, and cool completely before slicing into squares."
+                ]
+            }
+        ];
+
+        let currentBatchScale = 1;
+        let currentRecipeFilter = "all";
+        let inspectedRecipeId = null;
+
+        // Format scaled ingredient quantities cleanly (fractions & decimals)
+        function formatScaledQuantity(baseAmount, scale) {
+            const total = baseAmount * scale;
+            const whole = Math.floor(total);
+            const frac = +(total - whole).toFixed(2);
+
+            let fracStr = "";
+            if (Math.abs(frac - 0.25) < 0.03) fracStr = "¼";
+            else if (Math.abs(frac - 0.33) < 0.04) fracStr = "⅓";
+            else if (Math.abs(frac - 0.5) < 0.03) fracStr = "½";
+            else if (Math.abs(frac - 0.66) < 0.04 || Math.abs(frac - 0.67) < 0.04) fracStr = "⅔";
+            else if (Math.abs(frac - 0.75) < 0.03) fracStr = "¾";
+            else if (frac > 0.02) return total.toFixed(1).replace(/\.0$/, "");
+
+            if (whole > 0 && fracStr) return `${whole} ${fracStr}`;
+            if (whole > 0) return `${whole}`;
+            return fracStr || total.toString();
+        }
+
+        function setBatchScale(scale) {
+            currentBatchScale = scale;
+
+            // Update main toolbar scale pills
+            [1, 2, 3].forEach(s => {
+                const btn = document.getElementById(`scale-btn-${s}`);
+                if (btn) {
+                    btn.className = s === scale
+                        ? "scale-btn px-3.5 py-1 rounded-full bg-cranberry text-newsprint font-mono text-xs font-bold transition-all cursor-pointer"
+                        : "scale-btn px-3.5 py-1 rounded-full text-pine hover:bg-newsprint-deep font-mono text-xs font-bold transition-all cursor-pointer";
+                }
+            });
+
+            // Update modal scale pills if open
+            document.querySelectorAll('.modal-scale-btn').forEach(btn => {
+                const btnScale = parseInt(btn.textContent, 10);
+                btn.className = btnScale === scale
+                    ? "modal-scale-btn px-2.5 py-0.5 rounded-full bg-cranberry text-newsprint font-mono text-xs font-bold cursor-pointer"
+                    : "modal-scale-btn px-2.5 py-0.5 rounded-full text-pine hover:bg-newsprint-cream font-mono text-xs font-bold cursor-pointer";
+            });
+
+            renderSignatureRecipes();
+            if (inspectedRecipeId) {
+                renderInspectedRecipeModal(inspectedRecipeId);
+            }
+        }
+
+        function setRecipeFilter(category) {
+            currentRecipeFilter = category;
+            ["all", "Cookies", "Cocoa & Drinks", "Sleigh-Side Treats"].forEach(cat => {
+                const btn = document.getElementById(`filter-btn-${cat}`);
+                if (btn) {
+                    btn.className = cat === category
+                        ? "filter-btn px-3.5 py-1.5 rounded-full bg-pine text-newsprint font-mono text-xs font-bold uppercase tracking-wider border border-pine transition-all cursor-pointer"
+                        : "filter-btn px-3.5 py-1.5 rounded-full bg-newsprint-cream hover:bg-newsprint-deep text-pine font-mono text-xs font-bold uppercase tracking-wider border border-pine/25 transition-all cursor-pointer";
+                }
+            });
+            renderSignatureRecipes();
+        }
+
+        function renderSignatureRecipes() {
+            const grid = document.getElementById("signature-recipes-grid");
+            const filtered = currentRecipeFilter === "all"
+                ? signatureRecipes
+                : signatureRecipes.filter(r => r.category === currentRecipeFilter);
+
+            grid.innerHTML = filtered.map(recipe => {
+                const scaledYield = recipe.baseYield * currentBatchScale;
+                const previewIngredients = recipe.ingredients.slice(0, 4).map(ing => `
+                    <li class="flex items-baseline justify-between gap-2 py-1 border-b border-pine/10 text-xs">
+                        <span class="text-pine/90">${ing.name}</span>
+                        <span class="font-mono font-bold text-cranberry shrink-0">${formatScaledQuantity(ing.amount, currentBatchScale)} ${ing.unit}</span>
+                    </li>
+                `).join("");
+
+                return `
+                    <article class="bg-newsprint rounded-3xl p-6 sm:p-7 border-2 border-pine/30 hover:border-brass shadow-sm hover:shadow-xl transition-all flex flex-col justify-between space-y-5">
+                        <div class="space-y-4">
+                            <!-- Top Category & Yield Badge -->
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="px-3 py-1 rounded-full bg-newsprint-cream text-pine font-mono text-[11px] font-bold uppercase tracking-wider border border-pine/20">
+                                    ${recipe.category}
+                                </span>
+                                <span class="font-mono text-xs font-bold text-cranberry">
+                                    Yield: ${scaledYield} ${recipe.yieldUnit} (${currentBatchScale}x)
+                                </span>
+                            </div>
+
+                            <!-- Recipe Title -->
+                            <div class="flex items-start gap-3">
+                                <span class="text-3xl shrink-0">${recipe.icon}</span>
+                                <h3 class="font-display text-2xl font-bold text-pine leading-snug">
+                                    ${recipe.title}
+                                </h3>
+                            </div>
+
+                            <p class="text-sm text-pine/80 leading-relaxed">
+                                ${recipe.summary}
+                            </p>
+
+                            <!-- Live Scaled Ingredient Preview -->
+                            <div class="bg-newsprint-cream/80 rounded-2xl p-4 border border-pine/15 space-y-1.5">
+                                <div class="flex items-center justify-between font-mono text-[10px] font-bold uppercase tracking-wider text-pine/70 pb-1">
+                                    <span>Scaled Ingredients (${currentBatchScale}x)</span>
+                                    <span>${recipe.prepTime} + ${recipe.bakeTime}</span>
+                                </div>
+                                <ul>
+                                    ${previewIngredients}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between gap-3">
+                            <span class="font-mono text-[11px] text-pine/65">+ ${recipe.ingredients.length - 4} more items</span>
+                            <button type="button" onclick="openRecipeInspection('${recipe.id}')" class="px-5 py-2.5 rounded-full bg-pine hover:bg-cranberry text-newsprint font-mono text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                                Open Full Recipe →
+                            </button>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        function openRecipeInspection(recipeId) {
+            inspectedRecipeId = recipeId;
+            setBatchScale(currentBatchScale);
+            document.getElementById("recipe-inspection-modal").classList.remove("hidden");
+        }
+
+        function renderInspectedRecipeModal(recipeId) {
+            const recipe = signatureRecipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+
+            const scaledYield = recipe.baseYield * currentBatchScale;
+            document.getElementById("inspected-recipe-category").textContent = `${recipe.category} • Official North Pole Ledger`;
+            document.getElementById("inspected-recipe-title").textContent = `${recipe.icon} ${recipe.title}`;
+            document.getElementById("inspected-recipe-meta").textContent =
+                `Prep: ${recipe.prepTime} • Bake: ${recipe.bakeTime} • Yield: ${scaledYield} ${recipe.yieldUnit} (${currentBatchScale}x)`;
+
+            document.getElementById("inspected-ingredients-list").innerHTML = recipe.ingredients.map(ing => `
+                <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-newsprint-cream/80 hover:bg-newsprint-cream border border-pine/15 cursor-pointer select-none">
+                    <input type="checkbox" class="mt-1 accent-[#9E2A2B] w-4 h-4 rounded cursor-pointer">
+                    <span class="text-xs sm:text-sm text-pine leading-snug">
+                        <strong class="font-mono text-cranberry">${formatScaledQuantity(ing.amount, currentBatchScale)} ${ing.unit}</strong> ${ing.name}
+                    </span>
+                </label>
+            `).join("");
+
+            document.getElementById("inspected-steps-list").innerHTML = recipe.steps.map(step => `
+                <li class="pl-1 leading-relaxed">${step}</li>
+            `).join("");
+        }
+
+        function closeRecipeInspection() {
+            inspectedRecipeId = null;
+            document.getElementById("recipe-inspection-modal").classList.add("hidden");
+        }
+
+        // 2. NORTH POLE BAKING PERSONALITY & RECIPE MATCHER (3-QUESTION QUIZ)
+        const quizData = [
+            {
+                prompt: "1. Snow is swirling outside the workshop window. What aroma draws you straight to the kitchen?",
+                choices: [
+                    { emoji: "🍪", title: "Warm Molasses, Ginger & Cloves", desc: "Spiced dough rolling out on a flour-dusted counter.", role: "pastry" },
+                    { emoji: "☕", title: "Melted Dark Chocolate & Peppermint", desc: "Steaming copper kettles and vanilla whipped cream.", role: "barista" },
+                    { emoji: "🦌", title: "Toasted Oats, Maple & Roasted Pecans", desc: "Golden, hearty treats built for midnight sleigh runs.", role: "reindeer" }
+                ]
+            },
+            {
+                prompt: "2. Which heirloom tool do you claim first on Mrs. Claus’s workbench?",
+                choices: [
+                    { emoji: "⭐", title: "Brass North Star Cookie Cutters", desc: "Precision stamping for crisp-edged holiday tins.", role: "pastry" },
+                    { emoji: "🫕", title: "Hammered Copper Saucepan & Whisk", desc: "Slow-simmering velvety hearthside drinks.", role: "barista" },
+                    { emoji: "🥣", title: "Deep Stoneware Mixing Bowl", desc: "Wholesome one-bowl bakes packed with berries and nuts.", role: "reindeer" }
+                ]
+            },
+            {
+                prompt: "3. Who are you baking for first on Christmas Eve?",
+                choices: [
+                    { emoji: "🎅", title: "Santa Claus by the Chimney", desc: "He expects classic spiced cookies beside his milk glass.", role: "pastry" },
+                    { emoji: "🧝", title: "The Late-Shift Toyshop Elves", desc: "They need cozy mugs of cocoa after wrapping gifts.", role: "barista" },
+                    { emoji: "🛷", title: "Dasher, Dancer & Rudolph", desc: "They love crunchy maple-oat squares before takeoff.", role: "reindeer" }
+                ]
+            }
+        ];
+
+        const quizGuildRoles = {
+            pastry: {
+                roleTitle: "Head Pastry Elf",
+                badge: "Guild Assignment • Candy Cane Lane",
+                summary: "You have an eye for golden spice blends and crisp, fragrant cookie batches that make Santa linger by the hearth.",
+                recipeId: "midnight-gingerbread",
+                recipeTitle: "Midnight Sleigh-Ride Gingerbread"
+            },
+            barista: {
+                roleTitle: "Midnight Hearthside Cocoa Barista",
+                badge: "Guild Assignment • Cocoa Kettle Room",
+                summary: "Cozy warmth is your superpower—you turn snowy evenings into celebrations with velvety dark chocolate and peppermint.",
+                recipeId: "velvety-peppermint-cocoa",
+                recipeTitle: "Velvety Peppermint Hot Cocoa"
+            },
+            reindeer: {
+                roleTitle: "Chief Reindeer Treat & Sleigh Baker",
+                badge: "Guild Assignment • Reindeer Barn Kitchen",
+                summary: "Generous and wholesome, you craft hearty maple-pecan oat squares sturdy enough to fuel a flight around the globe.",
+                recipeId: "reindeer-maple-oat-treats",
+                recipeTitle: "Reindeer-Approved Maple Oat Treats"
+            }
+        };
+
+        let currentQuizIndex = 0;
+        let guildTallies = { pastry: 0, barista: 0, reindeer: 0 };
+
+        function renderPersonalityQuiz() {
+            const stage = document.getElementById("quiz-stage");
+            const progressText = document.getElementById("quiz-progress-text");
+
+            [0, 1, 2].forEach(i => {
+                const pip = document.getElementById(`quiz-pip-${i}`);
+                if (pip) {
+                    pip.className = i <= currentQuizIndex
+                        ? "w-3 h-3 rounded-full bg-brass"
+                        : "w-3 h-3 rounded-full bg-newsprint/25";
+                }
+            });
+
+            if (currentQuizIndex < quizData.length) {
+                const q = quizData[currentQuizIndex];
+                progressText.textContent = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+                stage.innerHTML = `
+                    <div class="space-y-6">
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-pine text-center leading-snug">
+                            ${q.prompt}
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            ${q.choices.map(c => `
+                                <button type="button" onclick="submitQuizChoice('${c.role}')" class="group text-left p-5 rounded-2xl bg-newsprint-cream hover:bg-pine hover:text-newsprint border-2 border-pine/20 hover:border-brass transition-all flex flex-col justify-between space-y-3 cursor-pointer shadow-xs">
+                                    <span class="text-3xl">${c.emoji}</span>
+                                    <div class="space-y-1">
+                                        <h4 class="font-display font-bold text-lg text-pine group-hover:text-brass-light leading-tight">${c.title}</h4>
+                                        <p class="font-mono text-xs text-pine/75 group-hover:text-newsprint/85 leading-relaxed">${c.desc}</p>
+                                    </div>
+                                </button>
+                            `).join("")}
+                        </div>
+                    </div>
+                `;
+            } else {
+                const topRole = Object.keys(guildTallies).reduce((a, b) => guildTallies[a] >= guildTallies[b] ? a : b);
+                const result = quizGuildRoles[topRole];
+                progressText.textContent = "Official North Pole Guild Assignment";
+
+                stage.innerHTML = `
+                    <div class="text-center max-w-2xl mx-auto space-y-5">
+                        <div class="w-16 h-16 mx-auto rounded-full bg-cranberry border-2 border-brass-light flex items-center justify-center text-3xl text-newsprint shadow-lg">
+                            🎖️
+                        </div>
+                        <div class="space-y-1">
+                            <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-cranberry">${result.badge}</span>
+                            <h3 class="font-display text-3xl sm:text-4xl font-black text-pine">${result.roleTitle}</h3>
+                        </div>
+                        <p class="text-sm sm:text-base text-pine/85 leading-relaxed">
+                            ${result.summary}
+                        </p>
+                        <div class="bg-newsprint-cream rounded-2xl p-5 border-2 border-brass space-y-3">
+                            <span class="block font-mono text-[11px] font-bold uppercase tracking-widest text-pine">Your Matched Signature Recipe:</span>
+                            <p class="font-display text-xl font-bold text-cranberry">${result.recipeTitle}</p>
+                            <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
+                                <button type="button" onclick="openRecipeInspection('${result.recipeId}')" class="px-5 py-2.5 rounded-full bg-pine hover:bg-pine-dark text-newsprint font-mono text-xs font-bold uppercase tracking-wider cursor-pointer">
+                                    📖 Jump to Matched Recipe
+                                </button>
+                                <button type="button" onclick="restartPersonalityQuiz()" class="px-5 py-2.5 rounded-full bg-newsprint hover:bg-newsprint-deep text-pine border border-pine/30 font-mono text-xs font-bold uppercase tracking-wider cursor-pointer">
+                                    ↻ Retake Quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function submitQuizChoice(role) {
+            guildTallies[role] += 1;
+            currentQuizIndex += 1;
+            renderPersonalityQuiz();
+        }
+
+        function restartPersonalityQuiz() {
+            currentQuizIndex = 0;
+            guildTallies = { pastry: 0, barista: 0, reindeer: 0 };
+            renderPersonalityQuiz();
+        }
+
+        // 3. "SEND A HINT" NORTH POLE POSTCARD GENERATOR
+        function selectPostcardStamp(icon, label) {
+            document.getElementById("preview-stamp-icon").textContent = icon;
+            document.getElementById("preview-stamp-label").textContent = label;
+
+            [0, 1, 2].forEach(idx => {
+                const btn = document.getElementById(`stamp-btn-${idx}`);
+                if (!btn) return;
+                const isSelected = btn.textContent.includes(icon);
+                btn.className = isSelected
+                    ? "stamp-btn py-2 px-2 rounded-xl bg-pine text-newsprint border-2 border-brass font-mono text-[10px] font-bold text-center transition-all cursor-pointer"
+                    : "stamp-btn py-2 px-2 rounded-xl bg-newsprint hover:bg-newsprint-deep text-pine border border-pine/25 font-mono text-[10px] font-bold text-center transition-all cursor-pointer";
+            });
+        }
+
+        function refreshPostcard() {
+            const toVal = document.getElementById("hint-to").value.trim() || "My Favorite Elf";
+            const fromVal = document.getElementById("hint-from").value.trim() || "A Holiday Baker";
+            const editionVal = document.getElementById("hint-edition").value;
+            const msgVal = document.getElementById("hint-message").value.trim() || "Leave this under the tree and I’ll bake for you on Christmas morning!";
+
+            document.getElementById("preview-hint-to").textContent = toVal;
+            document.getElementById("preview-hint-from").textContent = fromVal;
+            document.getElementById("preview-hint-edition").textContent = editionVal;
+            document.getElementById("preview-hint-message").textContent = `“${msgVal}”`;
+        }
+
+        function copyHintMessage() {
+            const toVal = document.getElementById("hint-to").value.trim() || "Friend";
+            const fromVal = document.getElementById("hint-from").value.trim() || "Me";
+            const editionVal = document.getElementById("hint-edition").value;
+            const msgVal = document.getElementById("hint-message").value.trim();
+
+            const fullMessage = `📮 Official North Pole Postcard for ${toVal}!\n“${msgVal}”\n🎄 Wish-List Pick: From the North Pole Kitchen — ${editionVal}\n✨ Postal Promo Code: NORTHPOLE15 (15% Off) — From ${fromVal}`;
+
+            const ta = document.createElement("textarea");
+            ta.value = fullMessage;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } catch (e) {}
+            document.body.removeChild(ta);
+
+            const status = document.getElementById("hint-copy-status");
+            status.textContent = "✓ Hint postcard message copied to clipboard!";
+            status.classList.remove("hidden");
+            setTimeout(() => status.classList.add("hidden"), 3800);
+        }
+
+        // 4. SLEIGH MAIL BAG CART DRAWER & PROMO CODES (NORTHPOLE15, RESCUE20)
+        let sleighMailBag = [];
+        let activePostalCode = null;
+        const postalPromoRates = {
+            "NORTHPOLE15": 0.15,
+            "RESCUE20": 0.20
+        };
+
+        function addToMailBag(title, price, subtitle) {
+            const existing = sleighMailBag.find(item => item.title === title);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                sleighMailBag.push({ title, price, subtitle, qty: 1 });
+            }
+            renderMailBagUI();
+            toggleMailBag(true);
+        }
+
+        function updateMailBagQty(index, delta) {
+            sleighMailBag[index].qty += delta;
+            if (sleighMailBag[index].qty <= 0) {
+                sleighMailBag.splice(index, 1);
+            }
+            renderMailBagUI();
+        }
+
+        function applyPostalPromo() {
+            const field = document.getElementById("mailbag-promo-field");
+            const feedback = document.getElementById("mailbag-promo-feedback");
+            const entered = (field.value || "").trim().toUpperCase();
+
+            if (postalPromoRates[entered]) {
+                activePostalCode = entered;
+                field.value = entered;
+                const percent = Math.round(postalPromoRates[entered] * 100);
+                feedback.textContent = `★ Code ${entered} applied (${percent}% off your Sleigh Mail Bag)!`;
+                feedback.className = "font-mono text-xs font-bold text-pine";
+                feedback.classList.remove("hidden");
+            } else {
+                activePostalCode = null;
+                feedback.textContent = "Code not in postal ledger. Try NORTHPOLE15 or RESCUE20.";
+                feedback.className = "font-mono text-xs font-bold text-cranberry";
+                feedback.classList.remove("hidden");
+            }
+            renderMailBagUI();
+        }
+
+        function renderMailBagUI() {
+            const container = document.getElementById("mailbag-items-container");
+            const badge = document.getElementById("mailbag-badge");
+            const subtotalEl = document.getElementById("mailbag-subtotal");
+            const discountRow = document.getElementById("mailbag-discount-row");
+            const discountLabel = document.getElementById("mailbag-discount-label");
+            const discountAmountEl = document.getElementById("mailbag-discount-amount");
+            const totalEl = document.getElementById("mailbag-total");
+            const checkoutBtn = document.getElementById("mailbag-checkout-btn");
+
+            const totalQty = sleighMailBag.reduce((acc, item) => acc + item.qty, 0);
+            const subtotal = sleighMailBag.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            const rate = activePostalCode ? postalPromoRates[activePostalCode] : 0;
+            const discountAmount = subtotal * rate;
+            const finalTotal = subtotal - discountAmount;
+
+            if (totalQty > 0) {
+                badge.textContent = totalQty;
+                badge.classList.remove("hidden");
+                checkoutBtn.disabled = false;
+            } else {
+                badge.classList.add("hidden");
+                checkoutBtn.disabled = true;
+            }
+
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            if (discountAmount > 0 && subtotal > 0) {
+                discountRow.classList.remove("hidden");
+                discountLabel.textContent = `${activePostalCode} (${Math.round(rate * 100)}% Off)`;
+                discountAmountEl.textContent = `-$${discountAmount.toFixed(2)}`;
+            } else {
+                discountRow.classList.add("hidden");
+            }
+            totalEl.textContent = `$${finalTotal.toFixed(2)}`;
+
+            if (sleighMailBag.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 space-y-2.5">
+                        <span class="text-4xl block">📮</span>
+                        <p class="font-display text-xl font-bold text-pine">Your Sleigh Mail Bag Is Empty</p>
+                        <p class="font-mono text-xs text-pine/70">Select a cookbook edition from The North Pole Gazette to begin.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = sleighMailBag.map((item, idx) => `
+                <div class="bg-newsprint-cream rounded-2xl p-4 border border-pine/20 flex items-center justify-between gap-3">
+                    <div>
+                        <h4 class="font-display font-bold text-pine text-base leading-snug">${item.title}</h4>
+                        <p class="font-mono text-[11px] text-pine/70">${item.subtitle}</p>
+                        <p class="font-mono font-bold text-cranberry text-sm mt-1">$${(item.price * item.qty).toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-newsprint rounded-full px-2.5 py-1 border border-pine/25">
+                        <button type="button" onclick="updateMailBagQty(${idx}, -1)" aria-label="Decrease quantity" class="w-6 h-6 rounded-full hover:bg-newsprint-cream text-pine font-mono font-bold cursor-pointer">−</button>
+                        <span class="font-mono text-xs font-bold w-4 text-center">${item.qty}</span>
+                        <button type="button" onclick="updateMailBagQty(${idx}, 1)" aria-label="Increase quantity" class="w-6 h-6 rounded-full hover:bg-newsprint-cream text-pine font-mono font-bold cursor-pointer">+</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function toggleMailBag(open) {
+            const drawer = document.getElementById("mailbag-drawer");
+            const overlay = document.getElementById("mailbag-overlay");
+            if (open) {
+                overlay.classList.remove("hidden");
+                drawer.classList.remove("translate-x-full");
+            } else {
+                overlay.classList.add("hidden");
+                drawer.classList.add("translate-x-full");
+            }
+        }
+
+        function completePostalOrder() {
+            if (sleighMailBag.length === 0) return;
+            const totalBooks = sleighMailBag.reduce((acc, i) => acc + i.qty, 0);
+            const promoClause = activePostalCode ? ` with promo code ${activePostalCode} honored` : "";
+            document.getElementById("checkout-confirm-summary").textContent =
+                `Head Postmaster Bernard has stamped ${totalBooks} ${totalBooks === 1 ? "copy" : "copies"} of "From the North Pole Kitchen" with crimson wax${promoClause}. Watch the winter sky for sleigh bells!`;
+
+            sleighMailBag = [];
+            renderMailBagUI();
+            toggleMailBag(false);
+            document.getElementById("checkout-confirm-modal").classList.remove("hidden");
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById("checkout-confirm-modal").classList.add("hidden");
+        }
+
+        function toggleMobileDrawer() {
+            document.getElementById("mobile-nav-drawer").classList.toggle("hidden");
+        }
+
+        // Initialize Page Sections on Load (Zero unrequested popups)
+        window.addEventListener("DOMContentLoaded", () => {
+            renderSignatureRecipes();
+            renderPersonalityQuiz();
+            refreshPostcard();
+            renderMailBagUI();
+        });
+    </script>
+</body>
+</html>
